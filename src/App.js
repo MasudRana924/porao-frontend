@@ -11,6 +11,7 @@ import CreatePost from './pages/tutor/jobpost/CreatePost';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Preloader from './components/loader/Preloader';
+import Profile from './pages/feature/tutor/profile/Profile';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,8 @@ function App() {
               <Route path='/auth/tutor/register' element={<TutorRegister />}></Route>
               <Route path='/auth/tutor/login' element={<TutorLogin />}></Route>
               <Route path='/tutor/create/post' element={<CreatePost />}></Route>
+              {/* profile dashboard */}
+              <Route path='/tutor/profile' element={<Profile />}></Route>
             </Routes>
             <Footer></Footer>
           </BrowserRouter>

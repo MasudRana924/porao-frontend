@@ -26,6 +26,7 @@ export const createTeacherRegister = createAsyncThunk(
     }
   }
 );
+
 const registerSlice = createSlice({
   name: "register",
   initialState: {

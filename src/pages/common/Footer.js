@@ -2,8 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <main className=" p-4 mt-12 lg:w-full lg:p-8 2xl:w-3/4 mx-auto lg:mt-28 mb-12">
-            <div className="container  mx-auto">
+        <main className=" mt-12 lg:w-full lg:p-8 2xl:w-3/4 mx-auto lg:mt-44 mb-12">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                     <div className="sm:col-span-2">
                         <h1 className="text-start max-w-lg text-xl font-semibold tracking-tight text-white xl:text-2xl dark:text-white">Subscribe our newsletter to get update.</h1>
@@ -70,9 +69,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <p className="text-white text-md font-semibold nav-text">&#169; copyright deserve to পড়াও</p>
-                </div>
-            </div>
-           
+                </div>  
         </main>
     );
 };

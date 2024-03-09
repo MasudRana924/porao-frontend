@@ -4,7 +4,7 @@ import './Navbar.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
-import { CiChat1, CiSettings } from "react-icons/ci";
+import { CiChat1} from "react-icons/ci";
 import { PiSignOutThin } from "react-icons/pi";
 import { logout } from '../redux/reducers/auth/authSlice';
 import { CgMenuGridO } from "react-icons/cg";
@@ -23,14 +23,14 @@ const Navbar = () => {
     };
     return (
         <nav className="w-full md:w-3/4 mx-auto relative  ">
-            <div className="container px-6 py-4 mx-auto">
+            <div className="container  py-4 mx-auto">
                 <div className="flex lg:items-center justify-between">
                     <div className="flex items-center justify-between">
                         <Link to="/" className="text-white text-xl md:text-3xl font-semibold font-serif nav-text">
                             Porao
                         </Link>
                     </div>
-                    <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
+                    <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
                         <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</Link>
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</Link>
@@ -86,11 +86,12 @@ const Navbar = () => {
                                 <div className="flex px-4 py-2 gap-2">
                                     <CgProfile className=" text-2xl text-gray-700 text-start" />
                                     <Link
-                                        to="/profile"
-                                        className="block text-md text-gray-700 text-start"
+                                       to={user?.role === "teacher" ? "/tutor/profile" : user?.role === "admin" ? "/admin/profile" : "/user/profile"}
+                                        className="block text-md font-semibold text-gray-700 capitalize  text-start"
                                         role="menuitem"
                                         tabindex="-1"
                                         id="user-menu-item-0"
+                                        onClick={() => setActive(false)}
                                     >
                                         Profile
                                     </Link>
@@ -98,32 +99,21 @@ const Navbar = () => {
                                 <div className="flex px-4 py-2 gap-2">
                                     <CiChat1 className=" text-2xl text-gray-700 text-start" />
                                     <Link
-                                        to="/messages"
-                                        className="block text-md text-gray-700 text-start"
+                                        to="/user/messages"
+                                        className="block text-md font-semibold text-gray-700 capitalize text-start"
                                         role="menuitem"
                                         tabindex="-1"
                                         id="user-menu-item-0"
+                                        onClick={() => setActive(false)}
                                     >
                                         Messages
-                                    </Link>
-                                </div>
-                                <div className="flex  px-4 py-2 gap-2">
-                                    <CiSettings className=" text-2xl text-gray-700 text-start" />
-                                    <Link
-                                        to="/settings"
-                                        className="block text-md text-gray-700 text-start"
-                                        role="menuitem"
-                                        tabindex="-1"
-                                        id="user-menu-item-0"
-                                    >
-                                        Settings & Privacy
                                     </Link>
                                 </div>
                                 <div className="flex  px-4 py-2 gap-2 mb-4">
                                     <PiSignOutThin className=" text-2xl text-gray-700 text-start" />
                                     <Link
                                         to=""
-                                        className="block text-md text-gray-700 text-start"
+                                        className="block text-md font-semibold text-gray-700 capitalize text-start"
                                         role="menuitem"
                                         tabindex="-1"
                                         id="user-menu-item-0"
