@@ -41,14 +41,14 @@ const TutorRegister = () => {
         <main className=" flex flex-1 justify-center items-center mt-24">
             <div className="w-full max-w-md overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div className="px-6 py-4">
-                    <p className="mt-10 text-start text-gray-500 dark:text-gray-400">
+                    <p className="mt-10 text-start text-gray-500 dark:text-gray-400 font-mono">
                         Login or create account
                     </p>
                     <form onSubmit={handleSubmit}>
                         <div className="flex justify-between gap-2">
                             <div className="w-full mt-4">
                                 <input
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                    className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                     type="text"
                                     placeholder="Full Name"
                                     aria-label="Full Name"
@@ -58,7 +58,7 @@ const TutorRegister = () => {
                             </div>
                             <div className="w-full mt-4">
                                 <input
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                    className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                     type="text"
                                     placeholder="Versity Name"
                                     aria-label="Versity Name"
@@ -71,7 +71,7 @@ const TutorRegister = () => {
                         <div className="flex justify-between gap-2">
                             <div className="w-full mt-4">
                                 <input
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                    className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                     type="text"
                                     placeholder="Expert On"
                                     aria-label="Expert On"
@@ -81,7 +81,7 @@ const TutorRegister = () => {
                             </div>
                             <div className="w-full mt-4">
                                 <input
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                    className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                     type="text"
                                     placeholder="Experience"
                                     aria-label="Experience"
@@ -93,7 +93,7 @@ const TutorRegister = () => {
                         </div>
                         <div className="w-full mt-4">
                             <input
-                                className="block w-full h-12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                className="font-mono block w-full h-12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                 type="Email"
                                 placeholder="Email"
                                 aria-label="Email"
@@ -126,7 +126,7 @@ const TutorRegister = () => {
 
                         <div className="w-full mt-4">
                             <input
-                                className="block w-full h-12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                className="font-mono block w-full h-12 px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                                 type="password"
                                 placeholder="Password"
                                 aria-label="Password"
@@ -135,7 +135,7 @@ const TutorRegister = () => {
                             />
                         </div>
 
-                        <button className="mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
+                        <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
                             Register
                         </button>
                         {
@@ -150,13 +150,13 @@ const TutorRegister = () => {
                 </div>
 
                 <div className="flex items-center justify-center py-4 text-center bg-gray-50 dark:bg-gray-700">
-                    <span className="text-sm text-gray-600 dark:text-gray-200">
+                    <span className="text-sm text-gray-600 dark:text-gray-200 font-mono">
                         Already have an account?{" "}
                     </span>
 
                     <Link
                         to="/auth/tutor/login"
-                        className="mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline"
+                        className="font-mono mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline"
                     >
                         Login
                     </Link>

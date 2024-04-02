@@ -2,7 +2,9 @@ import React from 'react';
 import ShuffleHero from '../hero/Hero';
 import Pricing from '../pricing/Pricing';
 import Stats from '../stats/Stats';
-import Post from '../feature/post/Post';
+import Post from '../feature/tutor/post/Post';
+
+
 
 const Home = () => {
     return (

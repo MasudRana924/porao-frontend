@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
 import { createTutorLogin } from "../../redux/reducers/auth/authSlice";
+import { useEffect } from "react";
 
 const TutorLogin = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [phone, setPhone] = useState("");
-    const { errorMessage, success } = useSelector(
+    const { errorMessage, isAuthenticated} = useSelector(
         (state) => state.user
     );
     const [isPhoneValid, setPhoneIsValid] = useState(false);
@@ -21,11 +23,17 @@ const TutorLogin = () => {
         e.preventDefault();
         dispatch(createTutorLogin({ phone, password }));
     };
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/tutor/profile');
+        }
+
+    }, [navigate, isAuthenticated]);
     return (
         <main className="flex flex-1 justify-center items-center mt-24">
             <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div className="px-6 py-4">
-                    <p className="mt-10 text-start text-gray-500 dark:text-gray-400">
+                    <p className="mt-10 text-start text-gray-500 dark:text-gray-400 font-mono">
                         Login or create account
                     </p>
                     <form onSubmit={handleSubmit}>
@@ -66,12 +74,12 @@ const TutorLogin = () => {
                         <div className="flex items-center justify-between mt-4">
                             <Link
                                 to="#"
-                                className="text-sm text-gray-600 dark:text-gray-200 hover:text-gray-500"
+                                className="font-mono text-sm text-gray-600 dark:text-gray-200 hover:text-gray-500"
                             >
                                 Forget Password?
                             </Link>
 
-                            <button className="px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
+                            <button className=" font-mono px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
                                 Sign In
                             </button>
                         </div>
@@ -87,13 +95,13 @@ const TutorLogin = () => {
                 </div>
 
                 <div className="flex items-center justify-center py-4 text-center bg-gray-50 dark:bg-gray-700">
-                    <span className="text-sm text-gray-600 dark:text-gray-200">
+                    <span className="text-sm text-gray-600 dark:text-gray-200 font-mono">
                         Don't have an account?{" "}
                     </span>
 
                     <Link
                         to="/auth/tutor/register"
-                        className="mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline"
+                        className="font-mono mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline"
                     >
                         Create
                     </Link>

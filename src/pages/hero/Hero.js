@@ -5,16 +5,16 @@ const ShuffleHero = () => {
   return (
     <section className=" w-full md:px-8 md:py-12 grid grid-cols-1 md:grid-cols-2 lg:items-center gap-8 lg:max-w-7xl mx-auto mt-12">
       <div>
-        <h3 className="text-start text-white text-7xl md:text-9xl font-semibold hero-text ">
+        <h3 className="text-start  text-white text-7xl md:text-9xl font-semibold hero-text ">
           Don't Sit 
         </h3>
-        <h3 className="text-start mt-4 text-white text-4xl md:text-7xl font-semibold hero-text ">
+        <h3 className="text-start font-mono mt-4 text-white text-4xl md:text-7xl font-semibold hero-text ">
            At Home
         </h3>
-        <h3 className="text-start mt-4 text-white text-4xl md:text-7xl font-semibold hero-text ">
+        <h3 className="text-start font-mono mt-4 text-white text-4xl md:text-7xl font-semibold hero-text ">
         Go Tuiton To 
         </h3>
-        <h3 className="text-start mt-4 text-white text-4xl md:text-7xl font-semibold hero-text">
+        <h3 className="text-start font-mono mt-4 text-white text-4xl md:text-7xl font-semibold hero-text">
         Gain Knowledge
         </h3>
       </div>

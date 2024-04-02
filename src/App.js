@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Preloader from './components/loader/Preloader';
 import Profile from './pages/feature/tutor/profile/Profile';
+import PrivateRoute from './components/route/PrivateRoute';
+import StudentProfile from './pages/feature/student/profile/StudentProfile';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,6 +34,7 @@ function App() {
               <Route path='/' element={<Home />}></Route>
               <Route path='/auth/student/register' element={<Register />}></Route>
               <Route path='/auth/student/login' element={<Login />}></Route>
+              <Route path='/student/profile' element={<PrivateRoute><StudentProfile></StudentProfile></PrivateRoute>}></Route>
               {/* teachers route */}
               <Route path='/auth/tutor/register' element={<TutorRegister />}></Route>
               <Route path='/auth/tutor/login' element={<TutorLogin />}></Route>

@@ -4,7 +4,7 @@ import './Navbar.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
-import { CiChat1} from "react-icons/ci";
+import { CiChat1 } from "react-icons/ci";
 import { PiSignOutThin } from "react-icons/pi";
 import { logout } from '../redux/reducers/auth/authSlice';
 import { CgMenuGridO } from "react-icons/cg";
@@ -26,20 +26,19 @@ const Navbar = () => {
             <div className="container  py-4 mx-auto">
                 <div className="flex lg:items-center justify-between">
                     <div className="flex items-center justify-between">
-                        <Link to="/" className="text-white text-xl md:text-3xl font-semibold font-serif nav-text">
+                        <Link to="/" className="text-white text-xl md:text-3xl font-semibold nav-text font-mono">
                             Porao
                         </Link>
                     </div>
                     <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
                         <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
-                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Contact Us</Link>
-                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</Link>
-                            <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Find Tutor</Link>
+                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Contact Us</Link>
+                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">About Us</Link>
+                            <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
                             {
                                 token && user?.role === "teacher" ?
-                                    <Link to="/tutor/create/post" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Create a post</Link> : <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Become a Tutor</Link>
+                                    <Link to="/tutor/create/post" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 font-mono">Create a post</Link> : <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
                             }
-
                         </div>
                         {token ? (
                             <button
@@ -68,7 +67,7 @@ const Navbar = () => {
                         ) : (
                             <div className="flex items-center mt-4 lg:mt-0">
                                 <Link to="/auth/student/login">
-                                    <h3 className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Signin</h3></Link>
+                                    <h3 className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Signin</h3></Link>
                             </div>
                         )}
                         {token && (
@@ -86,7 +85,7 @@ const Navbar = () => {
                                 <div className="flex px-4 py-2 gap-2">
                                     <CgProfile className=" text-2xl text-gray-700 text-start" />
                                     <Link
-                                       to={user?.role === "teacher" ? "/tutor/profile" : user?.role === "admin" ? "/admin/profile" : "/user/profile"}
+                                        to={user?.role === "teacher" ? "/tutor/profile" : user?.role === "admin" ? "/admin/profile" : "/user/profile"}
                                         className="block text-md font-semibold text-gray-700 capitalize  text-start"
                                         role="menuitem"
                                         tabindex="-1"
@@ -122,13 +121,11 @@ const Navbar = () => {
                                         Signout
                                     </Link>
                                 </div>
-
                             </div>
                         )}
-
                     </div>
                     {/* small devices */}
-                    <CgMenuGridO className="flex md:hidden  text-white text-2xl"/>
+                    <CgMenuGridO className="flex md:hidden  text-white text-2xl" />
                 </div>
             </div>
         </nav>

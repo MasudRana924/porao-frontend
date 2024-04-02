@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authSlice from "./reducers/auth/authSlice";
 import registerSlice from "./reducers/auth/registerSlice";
+import tuitionPostSlice from "./reducers/tuionPost/tuitionPostSlice";
 const persistConfig = {
   key: "authentication",
   storage,
@@ -10,7 +11,8 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, authSlice);
 const combinedReducer = {
   user: persistedReducer,
-  register:registerSlice
+  register:registerSlice,
+  posts:tuitionPostSlice
  
 };
 const middlewares = [];
