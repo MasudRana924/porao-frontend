@@ -15,7 +15,7 @@ export const tuitionPostSlice = createSlice({
         posts: [],
         isLoading: false,
         isError: false,
-        error: "",
+        // error: "",
     },
     extraReducers: (builder) => {
         builder
@@ -31,7 +31,7 @@ export const tuitionPostSlice = createSlice({
                 state.isLoading = true;
                 state.jobs = [];
                 state.isError = true;
-                state.error = action.payload.error?.message;
+                // state.error = action.payload.error?.message;
             });
     },
 });
