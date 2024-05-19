@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Profile.css';
-import {message} from 'antd';
+import { message } from 'antd';
 import { errorClean, updateTutorProfile } from '../../../redux/reducers/auth/authSlice';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const { user,updatedTeacher} = useSelector(state => state.user);
+    const { user, updatedTeacher } = useSelector(state => state.user);
     const { token } = useSelector(state => state.user.user);
     const [image, setAvatar] = useState();
     const [avatarPreview, setAvatarPreview] = useState();
@@ -32,22 +32,25 @@ const Profile = () => {
         };
         reader.readAsDataURL(e.target.files[0]);
     };
-    const handleUpdateProfile = async  e => {
+    const handleUpdateProfile = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);
         formData.append('phone', phone);
         formData.append('address', address);
-        formData.append('degree', degree); 
-        formData.append('gender', gender); 
-        formData.append('fees', fees); 
-        formData.append('expert', expert); 
-        formData.append('experience', experience); 
-        formData.append('versityName', versityName); 
-        formData.append('image', image); 
+        formData.append('degree', degree);
+        formData.append('gender', gender);
+        formData.append('fees', fees);
+        formData.append('expert', expert);
+        formData.append('experience', experience);
+        formData.append('versityName', versityName);
+        formData.append('image', image);
+        console.log("Form data before dispatch:", {
+            name, email, phone, address, degree, gender, fees, expert, experience, versityName, image
+        });
         dispatch(updateTutorProfile({ token, data: formData }));
-      };
+    };
     useEffect(() => {
         if (user) {
             setAvatarPreview(user?.image);
@@ -62,12 +65,14 @@ const Profile = () => {
             setVersityName(user?.versityName);
             setFees(user?.fees);
         }
-        if (updatedTeacher) {
-            message.success("Profile Successfully Updated")
-            dispatch(errorClean());
-          }
+    }, [user]);
 
-    }, [user, dispatch,updatedTeacher]);
+    useEffect(() => {
+        if (updatedTeacher) {
+            message.success("Profile Successfully Updated");
+            dispatch(errorClean());
+        }
+    }, [updatedTeacher, dispatch]);
     return (
         <section className="mt-8 max-w-2xl md:mt-32 md:max-w-3xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
             <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>

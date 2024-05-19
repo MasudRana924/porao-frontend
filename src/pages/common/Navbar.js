@@ -22,7 +22,7 @@ const Navbar = () => {
         setActive(false);
     };
     return (
-        <nav className="w-full md:w-3/4 mx-auto relative  ">
+        <nav className="w-full md:w-full lg:w-3/4 mx-auto relative  ">
             <div className="container  py-4 mx-auto">
                 <div className="flex lg:items-center justify-between">
                     <div className="flex items-center justify-between">
@@ -30,8 +30,8 @@ const Navbar = () => {
                             Porao
                         </Link>
                     </div>
-                    <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
-                        <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
+                    <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 transition-all duration-300 ease-in-out bg-gray-800 dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0  md:items-center">
+                        <div className="flex flex-col -mx-6 md:flex-row md:items-center md:mx-4 lg:mx-8">
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Contact Us</Link>
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">About Us</Link>
                             <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
@@ -41,29 +41,7 @@ const Navbar = () => {
                             }
                         </div>
                         {token ? (
-                            <button
-                                type="button"
-                                className={
-                                    token
-                                        ? "relative flex rounded-full  text-sm focus:outline-none focus:ring-none focus:ring-offset-2 focus:ring-offset-gray-800 bg-white p-2"
-                                        : "w-24 "
-                                }
-                                id="user-menu-button"
-                                aria-expanded="false"
-                                aria-haspopup="true"
-                                onClick={showMenu}
-                            >
-                                {token ? (
-                                    'MR'
-                                ) : (
-                                    <div>
-                                        <p className="text-xs text-white">
-                                            {" "}
-                                            Sign in / Register
-                                        </p>
-                                    </div>
-                                )}
-                            </button>
+                            <img src={user?.image} alt="" className="h-8 w-8 border rounded-full border-gray-900" onClick={showMenu}/>
                         ) : (
                             <div className="flex items-center mt-4 lg:mt-0">
                                 <Link to="/auth/student/login">

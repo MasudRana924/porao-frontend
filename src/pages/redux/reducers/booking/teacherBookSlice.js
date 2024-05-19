@@ -1,39 +1,39 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { publicGet } from "../../utilities/apiCaller";
+import { publicGet, publicPost } from "../../utilities/apiCaller";
 
 
-export const fetchTutionPost = createAsyncThunk(
-    "fetch/tuition/post",
+export const createBookTeacher = createAsyncThunk(
+    "create/teacher/book",
     async () => {
-        const response = await publicGet("/teacher/tuition/post");
+        const response = await publicPost("/teacher/tuition/post");
         return response.data;
     }
 );
-export const tuitionPostSlice = createSlice({
+export const teacheBookSlice = createSlice({
     name: "posts",
     initialState: {
-        posts: [],
+        booking: [],
         isLoading: false,
         isError: false,
         // error: "",
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchTutionPost.pending, (state) => {
+            .addCase(createBookTeacher.pending, (state) => {
                 state.isError = false;
                 state.isLoading = true;
             })
-            .addCase(fetchTutionPost.fulfilled, (state, action) => {
-                state.posts = action.payload;
+            .addCase(createBookTeacher.fulfilled, (state, action) => {
+                state.booking = action.payload;
                 state.isLoading = false;
             })
-            .addCase(fetchTutionPost.rejected, (state, action) => {
+            .addCase(createBookTeacher.rejected, (state, action) => {
                 state.isLoading = true;
-                state.posts = [];
+                state.booking = [];
                 state.isError = true;
                 // state.error = action.payload.error?.message;
             });
     },
 });
 
-export default tuitionPostSlice.reducer;
+export default teacheBookSlice.reducer;
