@@ -22,7 +22,7 @@ const Navbar = () => {
         setActive(false);
     };
     return (
-        <nav className="w-full md:w-full lg:w-3/4 mx-auto relative  ">
+        <nav className="w-full md:w-full lg:w-full xl:w-3/4 mx-auto relative  ">
             <div className="container  py-4 mx-auto">
                 <div className="flex lg:items-center justify-between">
                     <div className="flex items-center justify-between">
@@ -31,19 +31,19 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className=" hidden md:flex absolute inset-x-0 z-20 w-full px-6 transition-all duration-300 ease-in-out bg-gray-800 dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0  md:items-center">
-                        <div className="flex flex-col -mx-6 md:flex-row md:items-center md:mx-4 lg:mx-8">
-                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Contact Us</Link>
-                            <Link to="#" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">About Us</Link>
-                            <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
+                        <div className="flex flex-col -mx-6 md:flex-row md:items-center md:mx-4 lg:mx-4 2xl:mx-8">
+                            <Link to="#" className=" mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Contact Us</Link>
+                            <Link to="#" className=" px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">About Us</Link>
+                            <Link to="/components/teachersstore" className=" px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
                             {
                                 token && user?.role === "teacher" ?
-                                    <Link to="/tutor/create/post" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 font-mono">Create a post</Link> : <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
+                                    <Link to="/tutor/create/post" className=" px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 font-mono">Create a post</Link> : <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
                             }
                         </div>
                         {token ? (
                             <img src={user?.image} alt="" className="h-8 w-8 border rounded-full border-gray-900" onClick={showMenu}/>
                         ) : (
-                            <div className="flex items-center mt-4 lg:mt-0">
+                            <div className="flex items-center  xl:mt-0">
                                 <Link to="/auth/student/login">
                                     <h3 className="px-3 py-2 mx-3 mt-2 text-white transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Signin</h3></Link>
                             </div>
