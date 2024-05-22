@@ -14,7 +14,10 @@ import Preloader from './components/loader/Preloader';
 import Profile from './pages/feature/tutor/profile/Profile';
 import PrivateRoute from './components/route/PrivateRoute';
 import StudentProfile from './pages/feature/student/profile/StudentProfile';
-
+import io from 'socket.io-client';
+const socket = io('http://localhost:8088', {
+    transports: ['websocket', 'polling']
+});
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -22,6 +25,32 @@ function App() {
       setLoading(false);
     }, 2000);
   })
+  useEffect(() => {
+    // Log when socket connects
+    socket.on('connect', () => {
+        console.log('Connected to WebSocket server');
+    });
+    // Log any connection errors
+    socket.on('connect_error', (error) => {
+        console.log('WebSocket connection error:', error);
+    });
+    // Subscribe to new-notification event
+    socket.on('new-notification', (notification) => {
+        console.log('Received new notification:', notification);
+        // toast.info(notification.message); // Display the notification
+    });
+    // Log when socket disconnects
+    socket.on('disconnect', (reason) => {
+        console.log('Disconnected from WebSocket server:', reason);
+    });
+    // Cleanup function to remove the event listeners
+    return () => {
+        socket.off('connect');
+        socket.off('connect_error');
+        socket.off('new-notification');
+        socket.off('disconnect');
+    };
+}, []); 
   return (
     <div>
       {loading ? <div>
