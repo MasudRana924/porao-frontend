@@ -4,8 +4,8 @@ import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Student.css'
-import { createUserLogin } from "../../redux/reducers/auth/authSlice";
 import { Alert } from 'antd';
+import { createUserLogin } from "../../../redux/reducers/auth/authSlice";
 const Login = () => {
     const dispatch = useDispatch();
     const [phone, setPhone] = useState("");

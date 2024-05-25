@@ -4,9 +4,9 @@ import "react-phone-input-2/lib/style.css";
 import { Link, useNavigate } from "react-router-dom";
 import './Student.css'
 import { useDispatch, useSelector } from "react-redux";
-import { createStudentRegister } from "../../redux/reducers/auth/registerSlice";
 import { useEffect } from "react";
 import { message, Alert } from 'antd';
+import { createStudentRegister } from "../../../redux/reducers/auth/registerSlice";
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();

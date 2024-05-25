@@ -15,9 +15,11 @@ import Profile from './pages/feature/tutor/profile/Profile';
 import PrivateRoute from './components/route/PrivateRoute';
 import StudentProfile from './pages/feature/student/profile/StudentProfile';
 import io from 'socket.io-client';
+import { Button, message } from 'antd';
 const socket = io('http://localhost:8088', {
     transports: ['websocket', 'polling']
 });
+
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -35,8 +37,10 @@ function App() {
         console.log('WebSocket connection error:', error);
     });
     // Subscribe to new-notification event
+    //backend e websocket emit kora hoise new-notification name e so ei khane same name ei catch
     socket.on('new-notification', (notification) => {
-        console.log('Received new notification:', notification);
+      message.success(notification.message)
+        console.log('Received new notification:', notification.message);
         // toast.info(notification.message); // Display the notification
     });
     // Log when socket disconnects

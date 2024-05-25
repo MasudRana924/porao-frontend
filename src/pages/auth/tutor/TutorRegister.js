@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { message, Alert } from 'antd';
-import { createTeacherRegister } from "../../redux/reducers/auth/registerSlice";
+import { createTeacherRegister } from "../../../redux/reducers/auth/registerSlice";
 
 const TutorRegister = () => {
     const dispatch = useDispatch();

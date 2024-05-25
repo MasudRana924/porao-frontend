@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CgProfile } from "react-icons/cg";
 import { CiChat1 } from "react-icons/ci";
 import { PiSignOutThin } from "react-icons/pi";
-import { logout } from '../redux/reducers/auth/authSlice';
 import { CgMenuGridO } from "react-icons/cg";
+import { logout } from '../../redux/reducers/auth/authSlice';
 const Navbar = () => {
     const dispatch = useDispatch();
     const { token, user } = useSelector(

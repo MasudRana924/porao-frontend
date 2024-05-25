@@ -4,8 +4,8 @@ import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
-import { createTutorLogin } from "../../redux/reducers/auth/authSlice";
 import { useEffect } from "react";
+import { createTutorLogin } from "../../../redux/reducers/auth/authSlice";
 
 const TutorLogin = () => {
     const dispatch = useDispatch();

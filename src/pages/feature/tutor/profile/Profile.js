@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Profile.css';
 import { message } from 'antd';
-import { errorClean, updateTutorProfile } from '../../../redux/reducers/auth/authSlice';
+import { errorClean, updateTutorProfile } from '../../../../redux/reducers/auth/authSlice';
+
 
 const Profile = () => {
     const dispatch = useDispatch();

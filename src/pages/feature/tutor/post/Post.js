@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTutionPost } from '../../../redux/reducers/tuionPost/tuitionPostSlice';
-import { formatDate } from '../../../redux/utilities/helper';
+import { formatDate } from '../../../../redux/utilities/helper';
+import { fetchTutionPost } from '../../../../redux/reducers/tuionPost/tuitionPostSlice';
 const Post = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -12,7 +12,11 @@ const Post = () => {
     console.log(posts);
     return (
         <div className="w-full  mx-auto">
-            <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8 m-4">
+                <div className="flex justify-between">
+                <h1 className="text-xl text-start text-white font-mono nav-text">All Tuition Post</h1>
+                <p className="text-violet-500 text-sm font-mono ">see all</p>
+                </div>
+            <div className=" mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8 m-4">
                 {
                     posts?.map((post) =>
                     (<div className="flex gap-4 border border-gray-900 bg-gray-900 rounded-lg p-4 ">
@@ -21,7 +25,7 @@ const Post = () => {
                                 size={{ xs: 24, sm: 32, md: 40, lg: 48, xl: 54, xxl: 54 }}
                                 icon={post?.teacherInfo?.image}
                             /> */}
-                              <img className="object-cover w-12 h-12 rounded-full" src={post?.teacherInfo?.image} alt=""></img>
+                            <img className="object-cover w-12 h-12 rounded-full" src={post?.teacherInfo?.image} alt=""></img>
                         </div>
                         <div className="w-full">
                             <h1 className="text-white font-mono text-xl text-start">{post?.teacherInfo?.name}</h1>
