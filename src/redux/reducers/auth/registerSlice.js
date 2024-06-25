@@ -36,6 +36,7 @@ const registerSlice = createSlice({
     error: false,
     success: false,
     errorMessage: "",
+    email: '',
   },
   reducers: {
     registrationClean: (state) => {
@@ -71,6 +72,9 @@ const registerSlice = createSlice({
       state.tutorRegister = action.payload;
       state.errorMessage = "";
       state.success = true;
+      state.email = action.meta.arg.email;
+      // Save phone and pin to localStorage
+      localStorage.setItem('email', action.meta.arg.email);
     });
     builder.addCase(createTeacherRegister.rejected, (state, action) => {
       state.isLoading = false;

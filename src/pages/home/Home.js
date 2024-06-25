@@ -11,7 +11,7 @@ const Home = () => {
         <div className="p-4 md:p-0 md:w-3/4 mx-auto ">
             <ShuffleHero></ShuffleHero>
             <Post/>
-            <Stats/>
+            {/* <Stats/> */}
             <Pricing/>
         </div>
     );

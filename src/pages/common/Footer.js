@@ -5,7 +5,7 @@ const Footer = () => {
         <main className=" mt-12 lg:w-full lg:p-8 2xl:w-3/4 mx-auto lg:mt-44 mb-12">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                     <div className="sm:col-span-2">
-                        <h1 className="text-start max-w-lg text-xl font-semibold tracking-tight text-white xl:text-2xl dark:text-white font-mono">Subscribe our newsletter to get update.</h1>
+                        <h1 className="text-start max-w-lg text-xl font-semibold tracking-tight text-gray-900 xl:text-2xl dark:text-gray-900 font-mono">Subscribe our newsletter to get update.</h1>
 
                         <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
                             <input id="email" type="text" className="px-4 py-2 text-gray-400 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Email Address" />
@@ -17,22 +17,22 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <p className="text-start font-semibold text-white dark:text-white">Quick Link</p>
+                        <p className="text-start font-semibold text-gray-900 dark:text-gray-900">Quick Link</p>
 
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <a href="#" className="text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Home</a>
-                            <a href="#" className="text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Who We Are</a>
-                            <a href="#" className="text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Our Philosophy</a>
+                            <a href="#" className="text-gray-900 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Home</a>
+                            <a href="#" className="text-gray-900 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Who We Are</a>
+                            <a href="#" className="text-gray-900 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Our Philosophy</a>
                         </div>
                     </div>
 
                     <div>
-                        <p className="text-start font-semibold text-white dark:text-white">Industries</p>
+                        <p className="text-start font-semibold text-gray-900 dark:text-gray-900">Industries</p>
 
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <a href="#" className="text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Retail & E-Commerce</a>
-                            <a href="#" className="text-white transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Information Technology</a>
-                            <a href="#" className="text-whitetransition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Finance & Insurance</a>
+                            <a href="#" className="text-gray-900 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Retail & E-Commerce</a>
+                            <a href="#" className="text-gray-900 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Information Technology</a>
+                            <a href="#" className="text-gray-900transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500 font-mono">Finance & Insurance</a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ const Footer = () => {
 
                 <div className="flex items-center justify-between">
                     <div className="flex -mx-2">
-                        <a href="#" className="mx-2 text-white transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
+                        <a href="#" className="mx-2 text-gray-900 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
                             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -50,7 +50,7 @@ const Footer = () => {
                             </svg>
                         </a>
 
-                        <a href="#" className="mx-2 text-white transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Facebook">
+                        <a href="#" className="mx-2 text-gray-900 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Facebook">
                             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -59,7 +59,7 @@ const Footer = () => {
                             </svg>
                         </a>
 
-                        <a href="#" className="mx-2 text-white transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Github">
+                        <a href="#" className="mx-2 text-gray-900 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Github">
                             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -68,7 +68,7 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                    <p className="text-white text-md font-semibold nav-text font-mono">&#169; copyright deserve to পড়াও</p>
+                    <p className="text-gray-900 text-md font-semibold nav-text font-mono">&#169; copyright deserve to পড়াও</p>
                 </div>  
         </main>
     );

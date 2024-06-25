@@ -5,6 +5,7 @@ import authSlice from "./reducers/auth/authSlice";
 import registerSlice from "./reducers/auth/registerSlice";
 import tuitionPostSlice from "./reducers/tuionPost/tuitionPostSlice";
 import  teacheBookSlice  from "./reducers/booking/teacherBookSlice";
+import  verifyOTPSlice from "./reducers/auth/verifyOtpSlice";
 const persistConfig = {
   key: "authentication",
   storage,
@@ -13,6 +14,7 @@ const persistedReducer = persistReducer(persistConfig, authSlice);
 const combinedReducer = {
   user: persistedReducer,
   register:registerSlice,
+  otpVerification:verifyOTPSlice,
   posts:tuitionPostSlice,
   booking:teacheBookSlice
  

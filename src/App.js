@@ -16,6 +16,7 @@ import PrivateRoute from './components/route/PrivateRoute';
 import StudentProfile from './pages/feature/student/profile/StudentProfile';
 import io from 'socket.io-client';
 import { Button, message } from 'antd';
+import OtpVerify from './pages/auth/tutor/OtpVerify';
 const socket = io('http://localhost:8088', {
     transports: ['websocket', 'polling']
 });
@@ -70,6 +71,7 @@ function App() {
               <Route path='/student/profile' element={<PrivateRoute><StudentProfile></StudentProfile></PrivateRoute>}></Route>
               {/* teachers route */}
               <Route path='/auth/tutor/register' element={<TutorRegister />}></Route>
+              <Route path='/auth/tutor/verify/account' element={<OtpVerify />}></Route>
               <Route path='/auth/tutor/login' element={<TutorLogin />}></Route>
               <Route path='/tutor/create/post' element={<CreatePost />}></Route>
               {/* profile dashboard */}
