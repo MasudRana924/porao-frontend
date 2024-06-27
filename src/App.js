@@ -17,6 +17,9 @@ import StudentProfile from './pages/feature/student/profile/StudentProfile';
 import io from 'socket.io-client';
 import { Button, message } from 'antd';
 import OtpVerify from './pages/auth/tutor/OtpVerify';
+import MainProfile from './pages/feature/tutor/profile/profiledashboard/MainProfile';
+import BatchForm from './pages/feature/tutor/batch/BatchForm';
+import TutorDashboard from './pages/feature/tutor/dashoboard/TutorDashboard';
 const socket = io('http://localhost:8088', {
     transports: ['websocket', 'polling']
 });
@@ -76,6 +79,13 @@ function App() {
               <Route path='/tutor/create/post' element={<CreatePost />}></Route>
               {/* profile dashboard */}
               <Route path='/tutor/profile' element={<Profile />}></Route>
+              <Route path='/tutor/dashboard' element={<MainProfile />}>
+              <Route index element={<TutorDashboard />} />
+              <Route path="/tutor/dashboard/profile" element={<Profile />} />
+          <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} />
+          {/* <Route path="account" element={<Account />} /> */}
+          {/* <Route path="attendance" element={<Attendance />} /> */}
+              </Route>
             </Routes>
             <Footer></Footer>
           </BrowserRouter>

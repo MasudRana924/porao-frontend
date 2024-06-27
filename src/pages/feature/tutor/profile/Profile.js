@@ -9,7 +9,7 @@ import { errorClean, updateTutorProfile } from '../../../../redux/reducers/auth/
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const { user, updatedTeacher } = useSelector(state => state.user);
+    const { user, updatedTeacher ,isLoading} = useSelector(state => state.user);
     const { token } = useSelector(state => state.user.user);
     const [image, setAvatar] = useState();
     const [avatarPreview, setAvatarPreview] = useState();
@@ -75,7 +75,7 @@ const Profile = () => {
         }
     }, [updatedTeacher, dispatch]);
     return (
-        <section className="mt-8 max-w-2xl md:mt-32 md:max-w-3xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+        <section className="w-2/4 ">
             <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
 
             <form onSubmit={handleUpdateProfile}>
@@ -172,7 +172,15 @@ const Profile = () => {
                 </div>
 
                 <div className="flex justify-end mt-6">
-                    <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
+                {isLoading ? (
+                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black  ">
+                        Loading
+                    </button>
+                ) : (
+                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black ">
+                        Update 
+                    </button>
+                )}
                 </div>
             </form>
         </section>

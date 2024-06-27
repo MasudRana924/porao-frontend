@@ -41,14 +41,16 @@ const Navbar = () => {
                             }
                         </div>
                         {token ? (
-                            <img src={user?.image} alt="" className="h-8 w-8 border rounded-full border-gray-900" onClick={showMenu}/>
+                            <Link to="/tutor/dashboard">
+                            <img src={user?.image} alt="" className="h-8 w-8 border rounded-full border-gray-900" />
+                            </Link>
                         ) : (
                             <div className="flex items-center  xl:mt-0">
                                 <Link to="/auth/student/login">
                                     <h3 className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200  dark:hover:bg-gray-700 font-mono">Signin</h3></Link>
                             </div>
                         )}
-                        {token && (
+                        {/* {token && (
                             <div
                                 className={
                                     active
@@ -100,7 +102,7 @@ const Navbar = () => {
                                     </Link>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                     </div>
                     {/* small devices */}
                     <CgMenuGridO className="flex md:hidden  text-gray-900 text-2xl" />
