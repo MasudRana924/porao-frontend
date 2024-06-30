@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { publicGet } from "../../utilities/apiCaller";
-
-
 export const fetchTutionPost = createAsyncThunk(
     "fetch/tuition/post",
     async () => {
-        const response = await publicGet("/teacher/tuition/post");
+        const response = await publicGet("/batch/all/batches");
         return response.data;
     }
 );
@@ -15,7 +13,6 @@ export const tuitionPostSlice = createSlice({
         posts: [],
         isLoading: false,
         isError: false,
-        // error: "",
     },
     extraReducers: (builder) => {
         builder
@@ -31,9 +28,7 @@ export const tuitionPostSlice = createSlice({
                 state.isLoading = true;
                 state.posts = [];
                 state.isError = true;
-                // state.error = action.payload.error?.message;
             });
     },
 });
-
 export default tuitionPostSlice.reducer;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,18 +7,20 @@ import { Alert } from 'antd';
 import { createUserLogin } from "../../../redux/reducers/auth/authSlice";
 const Login = () => {
     const dispatch = useDispatch();
-    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
     const { errorMessage, success } = useSelector(
         (state) => state.user
     );
-    const [isPhoneValid, setPhoneIsValid] = useState(false);
     const [password, setPassword] = useState("");
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createUserLogin({ phone, password }));
+        dispatch(createUserLogin({ email, password }));
     };
 
     return (
@@ -31,24 +32,12 @@ const Login = () => {
                     </p>
                     <form onSubmit={handleSubmit}>
                         <div className="w-full mt-8">
-                            <PhoneInput
-                                country={"bd"}
-                                inputProps={{
-                                    name: "Phone",
-                                    required: true,
-                                    //   autoFocus: true,
-                                }}
-                                isValid={(value, country) => {
-                                    if (value.match(/(^(\+880|880))[1|3-9]{1}(\d){9}$/)) {
-                                        setPhoneIsValid(true);
-                                        return true;
-                                    } else {
-                                        setPhoneIsValid(false);
-                                        return "Invalid Phone";
-                                        // return "Invalid value: " + value + ", " + country.name;
-                                    }
-                                }}
-                                onChange={(phone) => setPhone(phone)}
+                        <input
+                                className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-black dark:focus:border-black focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-black"
+                                type="email"
+                                placeholder="Email"
+                                aria-label="Email"
+                                onChange={handleEmailChange}
                                 required
                             />
                         </div>

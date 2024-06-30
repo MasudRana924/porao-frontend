@@ -20,8 +20,11 @@ import OtpVerify from './pages/auth/tutor/OtpVerify';
 import MainProfile from './pages/feature/tutor/profile/profiledashboard/MainProfile';
 import BatchForm from './pages/feature/tutor/batch/BatchForm';
 import TutorDashboard from './pages/feature/tutor/dashoboard/TutorDashboard';
+import SingleBatch from './pages/singlebatch/SingleBatch';
+import MainStudentDashboard from './pages/feature/student/dashboard/MainStudentDashboard';
+import StudentDashboard from './pages/feature/student/dashboard/StudentDashboard';
 const socket = io('http://localhost:8088', {
-    transports: ['websocket', 'polling']
+  transports: ['websocket', 'polling']
 });
 
 function App() {
@@ -34,31 +37,31 @@ function App() {
   useEffect(() => {
     // Log when socket connects
     socket.on('connect', () => {
-        console.log('Connected to WebSocket server');
+      console.log('Connected to WebSocket server');
     });
     // Log any connection errors
     socket.on('connect_error', (error) => {
-        console.log('WebSocket connection error:', error);
+      console.log('WebSocket connection error:', error);
     });
     // Subscribe to new-notification event
     //backend e websocket emit kora hoise new-notification name e so ei khane same name ei catch
     socket.on('new-notification', (notification) => {
       message.success(notification.message)
-        console.log('Received new notification:', notification.message);
-        // toast.info(notification.message); // Display the notification
+      console.log('Received new notification:', notification.message);
+      // toast.info(notification.message); // Display the notification
     });
     // Log when socket disconnects
     socket.on('disconnect', (reason) => {
-        console.log('Disconnected from WebSocket server:', reason);
+      console.log('Disconnected from WebSocket server:', reason);
     });
     // Cleanup function to remove the event listeners
     return () => {
-        socket.off('connect');
-        socket.off('connect_error');
-        socket.off('new-notification');
-        socket.off('disconnect');
+      socket.off('connect');
+      socket.off('connect_error');
+      socket.off('new-notification');
+      socket.off('disconnect');
     };
-}, []); 
+  }, []);
   return (
     <div>
       {loading ? <div>
@@ -80,11 +83,22 @@ function App() {
               {/* profile dashboard */}
               <Route path='/tutor/profile' element={<Profile />}></Route>
               <Route path='/tutor/dashboard' element={<MainProfile />}>
-              <Route index element={<TutorDashboard />} />
-              <Route path="/tutor/dashboard/profile" element={<Profile />} />
-          <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} />
-          {/* <Route path="account" element={<Account />} /> */}
-          {/* <Route path="attendance" element={<Attendance />} /> */}
+                <Route index element={<TutorDashboard />} />
+                <Route path="/tutor/dashboard/profile" element={<Profile />} />
+                <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} />
+                {/* <Route path="account" element={<Account />} /> */}
+                {/* <Route path="attendance" element={<Attendance />} /> */}
+              </Route>
+
+              {/* single batches post detaisl */}
+              <Route path="/batch/:batchId" element={<SingleBatch/>} />
+              {/* student dashboard */}
+              <Route path='/student/dashboard' element={<MainStudentDashboard />}>
+                <Route index element={<StudentDashboard />} />
+                {/* <Route path="/tutor/dashboard/profile" element={<Profile />} /> */}
+                {/* <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} /> */}
+                {/* <Route path="account" element={<Account />} /> */}
+                {/* <Route path="attendance" element={<Attendance />} /> */}
               </Route>
             </Routes>
             <Footer></Footer>

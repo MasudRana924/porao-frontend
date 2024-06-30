@@ -4,9 +4,10 @@ import storage from "redux-persist/lib/storage";
 import authSlice from "./reducers/auth/authSlice";
 import registerSlice from "./reducers/auth/registerSlice";
 import tuitionPostSlice from "./reducers/tuionPost/tuitionPostSlice";
-import  teacheBookSlice  from "./reducers/booking/teacherBookSlice";
 import  verifyOTPSlice from "./reducers/auth/verifyOtpSlice";
 import  uploadTuitionPostSlice  from "./reducers/tuionPost/uploadBatchSlice";
+import  singleBatchReducer  from "./reducers/batch/singleBatchSlice";
+import  teacherEnrollmentSlice  from "./reducers/enrollment/teacherBookSlice";
 const persistConfig = {
   key: "authentication",
   storage,
@@ -16,9 +17,10 @@ const combinedReducer = {
   user: persistedReducer,
   register:registerSlice,
   otpVerification:verifyOTPSlice,
-  // posts:tuitionPostSlice,
+  posts:tuitionPostSlice,
   uploadPost:uploadTuitionPostSlice,
-  booking:teacheBookSlice
+  singleBatch:singleBatchReducer,
+  enrollment:teacherEnrollmentSlice
  
 };
 const middlewares = [];
