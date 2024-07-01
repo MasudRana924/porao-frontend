@@ -63,7 +63,7 @@ const StudentProfile = () => {
         }
     }, [updatedStudent, dispatch]);
     return (
-        <section className="w-2/4 ">
+        <section className="w-full ">
             <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
 
             <form onSubmit={handleUpdateProfile} className='mt-12'>

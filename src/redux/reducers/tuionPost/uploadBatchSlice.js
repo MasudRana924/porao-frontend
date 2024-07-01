@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { privatePost, } from "../../utilities/apiCaller";
+import { privateGet, privatePost, } from "../../utilities/apiCaller";
 
 
 export const createTutionBatch = createAsyncThunk(
@@ -13,10 +13,22 @@ export const createTutionBatch = createAsyncThunk(
         }
       }
 );
+export const fetchTeacherBatch = createAsyncThunk(
+  'fetchTeacherBatch ',
+  async ({token}, { rejectWithValue }) => {
+      try{
+          const batches = await privateGet('/batch/all',token);
+          return batches;
+      }catch (err) {
+          return rejectWithValue(err.response.data.message);
+        }
+  }
+);
 export const uploadTuitionPostSlice = createSlice({
     name: "uploadBatch",
     initialState: {
         batch: [],
+        tutorBatches: [],
         isLoading: false,
         isError: false,
         success:false
@@ -43,8 +55,19 @@ export const uploadTuitionPostSlice = createSlice({
                 state.batch = [];
                 state.isError = true;
                 state.success = false;
-                // state.error = action.payload.error?.message;
-            });
+            })
+            .addCase(fetchTeacherBatch.pending, (state) => {
+              state.isLoading = true
+          })
+          .addCase(fetchTeacherBatch.fulfilled, (state, action) => {
+              state.tutorBatches= action.payload.batches;
+              state.isLoading = false
+              
+          })
+          .addCase(fetchTeacherBatch.rejected, (state, action) => {
+              state.isLoading = true
+              state.tutorEnrollments = [];
+          })
     },
 });
 export const { updatePostClean } = uploadTuitionPostSlice.actions;

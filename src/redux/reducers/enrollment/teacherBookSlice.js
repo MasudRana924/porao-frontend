@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { privateGet, privatePost,} from "../../utilities/apiCaller";
+import { privateGet, privatePost, privatePut,} from "../../utilities/apiCaller";
 
 
 export const createEnrollmentTeacher = createAsyncThunk(
@@ -24,21 +24,51 @@ export const fetchStudentEnrollment = createAsyncThunk(
           }
     }
 );
+export const fetchTeacherEnrollment = createAsyncThunk(
+    'fetchTeacherEnrollment ',
+    async ({token}, { rejectWithValue }) => {
+        try{
+            const enrollments = await privateGet('/enrollment/teacher',token);
+            return enrollments;
+        }catch (err) {
+            return rejectWithValue(err.response.data.message);
+          }
+    }
+);
+
+export const updateEnrollmentStatus = createAsyncThunk(
+    "teacher/updateEnrollmentStatus",
+    async ({ token,enrollmentId,status}, { rejectWithValue }) => {
+      try {
+        const response = await privatePut(`/enrollment/update/${enrollmentId}`, token, status);
+        return response.data;
+      } catch (err) {
+        return rejectWithValue(err.response);
+      }
+    }
+  );
 export const teacherEnrollmentSlice = createSlice({
     name: "posts",
     initialState: {
         enrollment: [],
         myEnrollments: [],
+        tutorEnrollments: [],
+        updatedStatus: {},
         isLoading: false,
         isError: false,
-        success:false
-        // error: "",
+        success:false,
+        isEnrollemtUpdated:false
     },
     reducers: {
         enrollmentClean: (state) => {
           state.errorMessage = "";
           state.success = false;
+          state.isEnrollemtUpdated = false;
         },
+        updateEnrollmentClean: (state) => {
+            state.isEnrollemtUpdated = false;
+          },
+
       },
     extraReducers: (builder) => {
         builder
@@ -70,7 +100,33 @@ export const teacherEnrollmentSlice = createSlice({
                 state.isLoading = true
                 state.myEnrollments = [];
             })
+            .addCase(fetchTeacherEnrollment.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchTeacherEnrollment.fulfilled, (state, action) => {
+                state.tutorEnrollments= action.payload.enrollments;
+                console.log("payload",action.payload.enrollments)
+                state.isLoading = false
+                
+            })
+            .addCase(fetchTeacherEnrollment.rejected, (state, action) => {
+                state.isLoading = true
+                state.tutorEnrollments = [];
+            })
+            builder.addCase(updateEnrollmentStatus.pending, (state) => {
+                state.isLoading = true;
+              });
+              builder.addCase(updateEnrollmentStatus.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.updatedStatus = action.payload;
+                state.errorMessage = "";
+                state.isEnrollemtUpdated=true
+              });
+              builder.addCase(updateEnrollmentStatus.rejected, (state, action) => {
+                state.isLoading = false;
+                state.errorMessage = action.payload.data.message;
+              });
     },
 });
-export const { enrollmentClean } = teacherEnrollmentSlice.actions;
+export const { enrollmentClean,updateEnrollmentClean } = teacherEnrollmentSlice.actions;
 export default teacherEnrollmentSlice.reducer;
