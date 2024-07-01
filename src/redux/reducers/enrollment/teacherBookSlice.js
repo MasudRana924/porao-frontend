@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { privatePost,} from "../../utilities/apiCaller";
+import { privateGet, privatePost,} from "../../utilities/apiCaller";
 
 
 export const createEnrollmentTeacher = createAsyncThunk(
@@ -13,10 +13,22 @@ export const createEnrollmentTeacher = createAsyncThunk(
           }
     }
 );
+export const fetchStudentEnrollment = createAsyncThunk(
+    'fetchStudentEnrollment ',
+    async ({token}, { rejectWithValue }) => {
+        try{
+            const enrollments = await privateGet('/enrollment/student',token);
+            return enrollments;
+        }catch (err) {
+            return rejectWithValue(err.response.data.message);
+          }
+    }
+);
 export const teacherEnrollmentSlice = createSlice({
     name: "posts",
     initialState: {
         enrollment: [],
+        myEnrollments: [],
         isLoading: false,
         isError: false,
         success:false
@@ -44,7 +56,20 @@ export const teacherEnrollmentSlice = createSlice({
                 state.enrollment = [];
                 state.isError = true;
                 // state.error = action.payload.error?.message;
-            });
+            })
+            .addCase(fetchStudentEnrollment.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchStudentEnrollment.fulfilled, (state, action) => {
+                state.myEnrollments= action.payload.enrollments;
+                console.log("payload",action.payload.enrollments)
+                state.isLoading = false
+                
+            })
+            .addCase(fetchStudentEnrollment.rejected, (state, action) => {
+                state.isLoading = true
+                state.myEnrollments = [];
+            })
     },
 });
 export const { enrollmentClean } = teacherEnrollmentSlice.actions;

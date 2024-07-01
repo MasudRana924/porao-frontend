@@ -17,7 +17,9 @@ const TutorRegister = () => {
     const [password, setPassword] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createTeacherRegister({ name,email,password }));
+        const data={name,email,password };
+        console.log("data",data)
+        dispatch(createTeacherRegister({ data}));
     };
     useEffect(() => {
         if (success) {
