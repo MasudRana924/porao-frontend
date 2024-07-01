@@ -78,7 +78,13 @@ const TutorBatchList = () => {
                         <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                           <h2 className="text-start text-green-500">
                             {" "}
-                            {dt.days}
+                            {/* {dt.days.join(', ')} */}
+                            {dt.days.map((day, index) => (
+      <span key={index}>
+        {day}
+        {index < dt.days.length - 1 && <span style={{ color: 'black' }}>, </span>}
+      </span>
+    ))}
                           </h2>
                         </td>
                       </tr>
