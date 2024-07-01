@@ -34,7 +34,7 @@ const Navbar = () => {
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">About Us</Link>
                             <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
                             {token && user?.role === "teacher" ?
-                                <Link to="/tutor/create/post" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 font-mono">Create a post</Link> :
+                                null :
                                 <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
                             }
                         </div>

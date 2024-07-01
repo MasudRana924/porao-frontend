@@ -5,14 +5,16 @@ import { fetchTeacherBatch } from '../../../../redux/reducers/tuionPost/uploadBa
 import { formatDate } from '../../../../redux/utilities/helper';
 
 const TutorBatchList = () => {
-    const dispatch = useDispatch();
-    const { token } = useSelector((state) => state.user.user);
-    const { tutorBatches } = useSelector((state) => state.uploadPost);
-    useEffect(() => {
-      dispatch(fetchTeacherBatch({ token }));
-    }, [dispatch, token]);
-    return (
-        <div className="w-full ">
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user.user);
+  const { tutorBatches } = useSelector((state) => state.uploadPost);
+  useEffect(() => {
+    dispatch(fetchTeacherBatch({ token }));
+  }, [dispatch, token]);
+
+
+  return (
+    <div className="w-full ">
       <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">
         My Batch List
       </h2>
@@ -32,7 +34,7 @@ const TutorBatchList = () => {
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 text-start"
+                        className=" py-3.5 text-sm font-normal text-start rtl:text-right text-gray-500 dark:text-gray-400 text-start"
                       >
                         Batch
                       </th>
@@ -48,6 +50,18 @@ const TutorBatchList = () => {
                       >
                         Days
                       </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 text-start"
+                      >
+                        Start
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 text-start"
+                      >
+                        End
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -62,9 +76,9 @@ const TutorBatchList = () => {
                         </td>
                         <td className=" text-sm font-medium whitespace-nowrap">
                           <div>
-                            <h2 className="font-medium text-gray-800 dark:text-white ">
+                            <h2 className="text-start font-medium text-gray-800 dark:text-white ">
                               {dt.name}
-                              {/* Hello */}
+
                             </h2>
                           </div>
                         </td>
@@ -77,15 +91,27 @@ const TutorBatchList = () => {
                         </td>
                         <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                           <h2 className="text-start text-green-500">
-                            {" "}
-                            {/* {dt.days.join(', ')} */}
                             {dt.days.map((day, index) => (
-      <span key={index}>
-        {day}
-        {index < dt.days.length - 1 && <span style={{ color: 'black' }}>, </span>}
-      </span>
-    ))}
+                              <span key={index}>
+                                {day}
+                                {index < dt.days.length - 1 && <span style={{ color: 'black' }}>, </span>}
+                              </span>
+                            ))}
                           </h2>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                          <div>
+                            <h2 className="text-start font-medium text-gray-800 dark:text-white ">
+                              {dt.startTime}
+                            </h2>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                          <div>
+                            <h2 className="text-start font-medium text-gray-800 dark:text-white ">
+                              {dt.endTime}
+                            </h2>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -96,8 +122,8 @@ const TutorBatchList = () => {
           </div>
         </div>
       </section>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default TutorBatchList;

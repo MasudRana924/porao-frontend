@@ -26,6 +26,7 @@ import StudentDashboard from './pages/feature/student/dashboard/StudentDashboard
 import StudentEnrollment from './pages/feature/student/enrollment/StudentEnrollment';
 import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
+import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
 });
@@ -91,6 +92,7 @@ function App() {
                 <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} />
                 <Route path="/tutor/dashboard/enrollment" element={<TutorEnrollment />} />
                 <Route path="/tutor/dashboard/batch" element={<TutorBatchList />} />
+                <Route path="/tutor/dashboard/attendance" element={<TutorAttendance />} />
               </Route>
 
               {/* single batches post detaisl */}

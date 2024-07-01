@@ -9,7 +9,7 @@ import { createTeacherRegister } from "../../../redux/reducers/auth/registerSlic
 const TutorRegister = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { success, errorMessage } = useSelector(
+    const { success, errorMessage,isLoading } = useSelector(
         (state) => state.register
     );
     const [name, setName] = useState("");
@@ -72,9 +72,11 @@ const TutorRegister = () => {
                                 />
                             </div>
                         </div>
-                        <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
+                        {isLoading?<button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
+                            Loading
+                        </button>:<button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg ">
                             Register
-                        </button>
+                        </button>}
                         {
                             errorMessage ? <Alert
                                 message={errorMessage}

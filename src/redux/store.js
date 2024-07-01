@@ -8,6 +8,8 @@ import  verifyOTPSlice from "./reducers/auth/verifyOtpSlice";
 import  uploadTuitionPostSlice  from "./reducers/tuionPost/uploadBatchSlice";
 import  singleBatchReducer  from "./reducers/batch/singleBatchSlice";
 import  teacherEnrollmentSlice  from "./reducers/enrollment/teacherBookSlice";
+import  batchEnrollmentSliceById  from "./reducers/enrollment/singleBatchEnrollmentSlice";
+import createAttendanceSlice from "./reducers/attendance/createAttendanceSlice";
 const persistConfig = {
   key: "authentication",
   storage,
@@ -20,7 +22,9 @@ const combinedReducer = {
   posts:tuitionPostSlice,
   uploadPost:uploadTuitionPostSlice,
   singleBatch:singleBatchReducer,
-  enrollment:teacherEnrollmentSlice
+  enrollment:teacherEnrollmentSlice,
+  batchDetails:batchEnrollmentSliceById,
+  attendance:createAttendanceSlice
  
 };
 const middlewares = [];

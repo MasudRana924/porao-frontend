@@ -48,8 +48,8 @@ const Post = () => {
                             </div>
                             <div className="w-full">
                                 <h1 className="text-white font-mono text-xl text-start">{post?.teacherInfo?.name}</h1>
-                                <p className='text-start text-white text-xs'>Subject Name : Math</p>
-                                <p className='text-start text-white text-xs'>Batch Name : Mohuri</p>
+                                <p className='text-start text-white text-xs'>Subject Name : {post.subject}</p>
+                                <p className='text-start text-white text-xs'>Batch Name : {post.name}</p>
                                 <p className='text-start text-white text-xs'>Capacity  :{post.capacity}</p>
                                 <p className='text-start text-xs text-white '>Days: {post.days.join(', ')}</p>
                             </div>
