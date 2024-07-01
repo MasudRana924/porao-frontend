@@ -10,6 +10,7 @@ import  singleBatchReducer  from "./reducers/batch/singleBatchSlice";
 import  teacherEnrollmentSlice  from "./reducers/enrollment/teacherBookSlice";
 import  batchEnrollmentSliceById  from "./reducers/enrollment/singleBatchEnrollmentSlice";
 import createAttendanceSlice from "./reducers/attendance/createAttendanceSlice";
+import  studentEnrollmentStatusSlice  from "./reducers/enrollment/studentEnrollmentSlice";
 const persistConfig = {
   key: "authentication",
   storage,
@@ -24,7 +25,8 @@ const combinedReducer = {
   singleBatch:singleBatchReducer,
   enrollment:teacherEnrollmentSlice,
   batchDetails:batchEnrollmentSliceById,
-  attendance:createAttendanceSlice
+  attendance:createAttendanceSlice,
+  enrollmentStatus:studentEnrollmentStatusSlice
  
 };
 const middlewares = [];
