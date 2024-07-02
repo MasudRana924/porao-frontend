@@ -28,6 +28,7 @@ import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
 import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
+
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
 });
@@ -99,13 +100,11 @@ function App() {
               {/* single batches post detaisl */}
               <Route path="/batch/:batchId" element={<SingleBatch/>} />
               {/* student dashboard */}
-              <Route path='/student/dashboard' element={<MainStudentDashboard />}>
-                <Route index element={<StudentDashboard />} />
-                <Route path="/student/dashboard/profile" element={<StudentProfile />} />
-                <Route path="/student/dashboard/enrollment" element={<StudentEnrollment />} />
-                <Route path="/student/dashboard/attendance" element={<AttendanceHistry />} />
-                {/* <Route path="account" element={<Account />} /> */}
-                {/* <Route path="attendance" element={<Attendance />} /> */}
+              <Route path='/student/dashboard' element={<PrivateRoute><MainStudentDashboard/></PrivateRoute>}>
+                <Route index element={<PrivateRoute><StudentDashboard /></PrivateRoute>} />
+                <Route path="/student/dashboard/profile" element={<PrivateRoute><StudentProfile /></PrivateRoute>} />
+                <Route path="/student/dashboard/enrollment" element={<PrivateRoute><StudentEnrollment /></PrivateRoute>} />
+                <Route path="/student/dashboard/attendance" element={<PrivateRoute><AttendanceHistry /></PrivateRoute>} />
               </Route>
             </Routes>
             <Footer></Footer>

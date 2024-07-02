@@ -7,14 +7,14 @@ import { formatDate } from "../../../../redux/utilities/helper";
 const StudentEnrollment = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user.user);
-  const { myEnrollments } = useSelector((state) => state.enrollment);
+  const { enrollments } = useSelector((state) => state.enrollment.myEnrollments);
   useEffect(() => {
     dispatch(fetchStudentEnrollment({ token }));
   }, [dispatch, token]);
 
   return (
     <div className="w-full p-16">
-      <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">
+      <h2 className="text-start text-2xl font-semibold text-gray-700 capitalize dark:text-white">
         My Enrollment
       </h2>
 
@@ -54,7 +54,7 @@ const StudentEnrollment = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {myEnrollments?.map((dt) => (
+                    {enrollments?.map((dt) => (
                       <tr>
                         <td className=" text-sm font-medium whitespace-nowrap">
                           <div>

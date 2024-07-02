@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Student.css'
 import { Alert } from 'antd';
 import { createUserLogin } from "../../../redux/reducers/auth/authSlice";
+import { useEffect } from "react";
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const { errorMessage, success } = useSelector(
         (state) => state.user
@@ -22,7 +24,17 @@ const Login = () => {
         e.preventDefault();
         dispatch(createUserLogin({ email, password }));
     };
-
+    const { isAuthenticated, isLoading } = useSelector(
+        (state) => state.user
+    );
+    useEffect(() => {
+        if (isAuthenticated) {
+            const timerId = setTimeout(() => {
+                navigate('/student/dashboard');
+            }, 1000);
+            return () => clearTimeout(timerId);
+        }
+    }, [isAuthenticated, navigate]);
     return (
         <main className="flex flex-1 justify-center items-center mt-24">
             <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -32,7 +44,7 @@ const Login = () => {
                     </p>
                     <form onSubmit={handleSubmit}>
                         <div className="w-full mt-8">
-                        <input
+                            <input
                                 className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-black dark:focus:border-black focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-black"
                                 type="email"
                                 placeholder="Email"
@@ -61,9 +73,13 @@ const Login = () => {
                                 Forget Password?
                             </Link>
 
-                            <button className="font-mono px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg  focus:outline-none ">
-                                Sign In
-                            </button>
+                            {
+                                isLoading ? <button className="font-mono px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg  focus:outline-none ">
+                                    Loading
+                                </button> : <button className="font-mono px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-lg  focus:outline-none ">
+                                    Sign In
+                                </button>
+                            }
                         </div>
                         {
                             errorMessage ? <Alert
