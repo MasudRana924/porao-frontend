@@ -13,7 +13,7 @@ const StudentEnrollment = () => {
   }, [dispatch, token]);
 
   return (
-    <div className="w-full ">
+    <div className="w-full p-16">
       <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">
         My Enrollment
       </h2>
