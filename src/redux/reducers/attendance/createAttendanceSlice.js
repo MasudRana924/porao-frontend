@@ -25,11 +25,23 @@ export const fetchStudentAttendance = createAsyncThunk(
     }
   }
 );
+export const fetchStudentAttendanceHistry = createAsyncThunk(
+  "fetch/AttendanceHistry",
+  async ({ token }, { rejectWithValue }) => {
+    try {
+      const response = await privateGet("/attendance/student/last-three-months", token);
+      return response;
+    } catch (err) {
+      return rejectWithValue(err.response.data.message);
+    }
+  }
+);
 export const createAttendanceSlice = createSlice({
     name: "createAttendance",
     initialState: {
       createAttendance: [],
       studentAttendances: [],
+      studentAttendancesHistry: [],
       isLoading: false,
       isError: false,
       success: false
@@ -69,6 +81,21 @@ export const createAttendanceSlice = createSlice({
         .addCase(fetchStudentAttendance.rejected, (state, action) => {
           state.isLoading = true;
           state.studentAttendances = [];
+          state.isError = true;
+          state.success = false;
+        })
+        .addCase(fetchStudentAttendanceHistry.pending, (state) => {
+          state.isError = false;
+          state.isLoading = true;
+        })
+        .addCase(fetchStudentAttendanceHistry.fulfilled, (state, action) => {
+          state.studentAttendancesHistry = action.payload;
+          state.isLoading = false;
+          state.success = true;
+        })
+        .addCase(fetchStudentAttendanceHistry.rejected, (state, action) => {
+          state.isLoading = true;
+          state.studentAttendancesHistry = [];
           state.isError = true;
           state.success = false;
         })

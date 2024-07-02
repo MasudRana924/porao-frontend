@@ -8,7 +8,8 @@ import {
   fetchStudentPendingEnrollment,
 } from "../../../../redux/reducers/enrollment/studentEnrollmentSlice";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { fetchStudentAttendance } from "../../../../redux/reducers/attendance/createAttendanceSlice";
+import { fetchStudentAttendance} from "../../../../redux/reducers/attendance/createAttendanceSlice";
+import AttendanceHistry from "../attendance/AttendanceHistry";
 const StudentDashboard = () => {
   const { token } = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
@@ -24,7 +25,6 @@ const StudentDashboard = () => {
   const approvedEnrollment = approvedStatus?.data?.length;
   const declinedJobs = 1;
   const { data } = useSelector((state) => state.attendance.studentAttendances);
-  console.log("data--", data);
   const presentStatus = data?.presentPercentage;
   const absentStatus = data?.absentPercentage;
 
@@ -69,6 +69,7 @@ const StudentDashboard = () => {
           />
         </div>
       </div>
+      <AttendanceHistry></AttendanceHistry>
     </div>
   );
 };
