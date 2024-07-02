@@ -28,6 +28,7 @@ import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
 import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
+import PrivateTutorRoute from './components/route/PrivateTutorRoute';
 
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
@@ -85,16 +86,16 @@ function App() {
               <Route path='/auth/tutor/register' element={<TutorRegister />}></Route>
               <Route path='/auth/tutor/verify/account' element={<OtpVerify />}></Route>
               <Route path='/auth/tutor/login' element={<TutorLogin />}></Route>
-              <Route path='/tutor/create/post' element={<CreatePost />}></Route>
+              {/* <Route path='/tutor/create/post' element={<CreatePost />}></Route> */}
               {/* profile dashboard */}
-              <Route path='/tutor/profile' element={<Profile />}></Route>
-              <Route path='/tutor/dashboard' element={<MainProfile />}>
-                <Route index element={<TutorDashboard />} />
-                <Route path="/tutor/dashboard/profile" element={<Profile />} />
-                <Route path="/tutor/dashboard/upload/batch" element={<BatchForm />} />
-                <Route path="/tutor/dashboard/enrollment" element={<TutorEnrollment />} />
-                <Route path="/tutor/dashboard/batch" element={<TutorBatchList />} />
-                <Route path="/tutor/dashboard/attendance" element={<TutorAttendance />} />
+              <Route path='/tutor/profile' element={<PrivateTutorRoute><Profile /></PrivateTutorRoute>}></Route>
+              <Route path='/tutor/dashboard' element={<PrivateTutorRoute><MainProfile /></PrivateTutorRoute>}>
+                <Route index element={<PrivateTutorRoute><TutorDashboard /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/profile" element={<PrivateTutorRoute><Profile /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/upload/batch" element={<PrivateTutorRoute><BatchForm /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/enrollment" element={<PrivateTutorRoute><TutorEnrollment /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/batch" element={<PrivateTutorRoute><TutorBatchList /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/attendance" element={<PrivateTutorRoute><TutorAttendance /></PrivateTutorRoute>} />
               </Route>
 
               {/* single batches post detaisl */}

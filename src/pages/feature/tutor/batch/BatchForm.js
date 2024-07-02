@@ -40,8 +40,8 @@ const BatchForm = () => {
         }
     }, [dispatch, success]);
     return (
-        <div className="w-2/4 ">
-            <h2 className="text-start text-xl text-gray-900">Upload Post</h2>
+        <div className="w-2/4 p-16">
+            <h2 className="text-start text-2xl text-gray-900">Upload Post</h2>
 
             <form className=" gap-6 mt-20 " onSubmit={handleSubmit}>
                 <div>
@@ -97,11 +97,11 @@ const BatchForm = () => {
                     </div>
                 </div>
                 {isLoading ? (
-                    <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black  ">
+                    <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500  ">
                         Loading
                     </button>
                 ) : (
-                    <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black ">
+                    <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 ">
                         Upload
                     </button>
                 )}
