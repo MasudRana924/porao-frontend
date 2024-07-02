@@ -8,6 +8,7 @@ import {
 import { BarChart } from "@mui/x-charts";
 import { fetchStudentEnrollment } from "../../../../redux/reducers/enrollment/teacherBookSlice";
 import { useState } from "react";
+import { fetchAttendanceByBatchId } from "../../../../redux/reducers/attendance/filterStudentAttendanceApi";
 
 const AttendanceHistry = () => {
   const { token } = useSelector((state) => state.user.user);
@@ -26,11 +27,14 @@ const AttendanceHistry = () => {
   const handleBatchChange = (e) => {
     setSelectedBatch(e.target.value);
   };
-
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(4);
   const handleSearchClick = () => {
     const batchId = selectedBatch;
     console.log("batch", batchId);
     dispatch(fetchStudentBatchAttendance({ token,batchId }));
+    dispatch(fetchAttendanceByBatchId({ batchId, page, perPage,token }));
+
   };
   return (
     <div>
