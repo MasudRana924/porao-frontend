@@ -36,12 +36,24 @@ export const fetchStudentAttendanceHistry = createAsyncThunk(
     }
   }
 );
+export const fetchStudentBatchAttendance = createAsyncThunk(
+  "fetch/batchAttendanceHistry",
+  async ({ token,batchId }, { rejectWithValue }) => {
+    try {
+      const response = await privateGet(`/attendance/student/attendance/${batchId}`, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue(err.response.data.message);
+    }
+  }
+);
 export const createAttendanceSlice = createSlice({
     name: "createAttendance",
     initialState: {
       createAttendance: [],
       studentAttendances: [],
       studentAttendancesHistry: [],
+      studentBatchAttendancesHistry: [],
       isLoading: false,
       isError: false,
       success: false
@@ -96,6 +108,21 @@ export const createAttendanceSlice = createSlice({
         .addCase(fetchStudentAttendanceHistry.rejected, (state, action) => {
           state.isLoading = true;
           state.studentAttendancesHistry = [];
+          state.isError = true;
+          state.success = false;
+        })
+        .addCase(fetchStudentBatchAttendance.pending, (state) => {
+          state.isError = false;
+          state.isLoading = true;
+        })
+        .addCase(fetchStudentBatchAttendance.fulfilled, (state, action) => {
+          state.studentBatchAttendancesHistry = action.payload;
+          state.isLoading = false;
+          state.success = true;
+        })
+        .addCase(fetchStudentBatchAttendance.rejected, (state, action) => {
+          state.isLoading = true;
+          state.studentBatchAttendancesHistry = [];
           state.isError = true;
           state.success = false;
         })

@@ -27,6 +27,7 @@ import StudentEnrollment from './pages/feature/student/enrollment/StudentEnrollm
 import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
 import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
+import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
 });
@@ -102,6 +103,7 @@ function App() {
                 <Route index element={<StudentDashboard />} />
                 <Route path="/student/dashboard/profile" element={<StudentProfile />} />
                 <Route path="/student/dashboard/enrollment" element={<StudentEnrollment />} />
+                <Route path="/student/dashboard/attendance" element={<AttendanceHistry />} />
                 {/* <Route path="account" element={<Account />} /> */}
                 {/* <Route path="attendance" element={<Attendance />} /> */}
               </Route>

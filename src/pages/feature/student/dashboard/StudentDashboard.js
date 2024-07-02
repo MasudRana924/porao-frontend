@@ -69,7 +69,6 @@ const StudentDashboard = () => {
           />
         </div>
       </div>
-      <AttendanceHistry></AttendanceHistry>
     </div>
   );
 };
