@@ -3,9 +3,16 @@ import { privateGet } from '../../utilities/apiCaller';
 
 export const fetchAttendanceByBatchId = createAsyncThunk(
   'attendance/fetchByBatchId',
-  async ({ batchId, page, perPage,token }) => {
-    const response = await privateGet(`/attendance/student?batchId=${batchId}&page=${page}&perPage=${perPage}`,token);
-    return response.json();
+  async ({ batchId, page, perPage, token }, { rejectWithValue }) => {
+    try {
+      const response = await privateGet(`/attendance/student?batchId=${batchId}&page=${page}&perPage=${perPage}`, token);
+      return response.data;
+    } catch (err) {
+      const errorMessage = err.response && err.response.data && err.response.data.message 
+        ? err.response.data.message 
+        : err.message;
+      return rejectWithValue(errorMessage);
+    }
   }
 );
 
@@ -23,37 +30,23 @@ export const attendanceSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-        .addCase(fetchAttendanceByBatchId.pending, (state) => {
-        //   state.isError = false;
-          state.isLoading = true;
-        })
-        .addCase(fetchAttendanceByBatchId.fulfilled, (state, action) => {
-          state.attendance = action.payload;
-          state.isLoading = false;
-          state.success = true;
-        })
-        .addCase(fetchAttendanceByBatchId.rejected, (state, action) => {
-          state.isLoading = true;
-          state.attendance = [];
-        //   state.isError = true;
-          state.success = false;
-        })
+      .addCase(fetchAttendanceByBatchId.pending, (state) => {
+        state.isLoading = true;
+        state.error = null; // Clear any previous errors
+      })
+      .addCase(fetchAttendanceByBatchId.fulfilled, (state, action) => {
+        state.attendance = action.payload.results;
+        state.totalResults = action.payload.totalResult;
+        state.isLoading = false;
+        state.success = true;
+      })
+      .addCase(fetchAttendanceByBatchId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.attendance = [];
+        state.success = false;
+        state.error = action.payload; // Store the error message
+      });
   }
-//   extraReducers: {
-//     // [fetchAttendanceByBatchId.pending]: (state) => {
-//     //   state.isLoading = true;
-//     // },
-//     // [fetchAttendanceByBatchId.fulfilled]: (state, action) => {
-//     //   state.isLoading = false;
-//     //   state.attendance = action.payload.results;
-//     //   state.totalResults = action.payload.totalResults;
-//     // },
-//     // [fetchAttendanceByBatchId.rejected]: (state, action) => {
-//     //   state.isLoading = false;
-//     //   state.error = action.error.message;
-//     // },
-//   },
 });
 
-// export const { createAttendanceClean } = createAttendanceSlice.actions;
 export default attendanceSlice.reducer;

@@ -58,9 +58,9 @@ const StudentEnrollment = () => {
                       <tr>
                         <td className=" text-sm font-medium whitespace-nowrap">
                           <div>
-                            <h2 className="font-medium text-gray-800 dark:text-white ">
+                            <h2 className="px-4 text-start font-medium text-gray-800 dark:text-white ">
                               {dt.batchInfo?.name}
-                              {/* Hello */}
+
                             </h2>
                           </div>
                         </td>
