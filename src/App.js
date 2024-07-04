@@ -28,12 +28,9 @@ import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
 import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
-<<<<<<< HEAD
 import MainConversation from './pages/conversation/MainConversation';
-=======
 import PrivateTutorRoute from './components/route/PrivateTutorRoute';
 
->>>>>>> 3f83356bc1c12ac9b4f62c9f6e0d4f3632492b68
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
 });
