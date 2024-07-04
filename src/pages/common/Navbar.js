@@ -4,7 +4,7 @@ import './Navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { CgMenuGridO } from 'react-icons/cg';
 import { logout } from '../../redux/reducers/auth/authSlice';
-
+import { FaFacebookMessenger } from "react-icons/fa";
 const Navbar = () => {
     const dispatch = useDispatch();
     const { token, user } = useSelector((state) => state.user);
@@ -38,6 +38,10 @@ const Navbar = () => {
                                 <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
                             }
                         </div>
+                        {token ? <Link to="/conversations" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">
+                        <FaFacebookMessenger className='text-xl text-blue-500'/>
+                        
+                        </Link>:null}
                         {token ? (
                             <Link to={dashboardLink}>
                                 <img src={user?.image} alt="" className="h-8 w-8 border rounded-full border-gray-900" />

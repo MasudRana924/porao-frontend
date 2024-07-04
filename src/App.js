@@ -28,6 +28,7 @@ import TutorEnrollment from './pages/feature/tutor/enrollment/TutorEnrollment';
 import TutorBatchList from './pages/feature/tutor/batch/TutorBatchList';
 import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
+import MainConversation from './pages/conversation/MainConversation';
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
 });
@@ -107,6 +108,7 @@ function App() {
                 {/* <Route path="account" element={<Account />} /> */}
                 {/* <Route path="attendance" element={<Attendance />} /> */}
               </Route>
+               <Route path='/conversations' element={<MainConversation />}></Route>
             </Routes>
             <Footer></Footer>
           </BrowserRouter>
