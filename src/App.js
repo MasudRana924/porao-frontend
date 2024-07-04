@@ -108,7 +108,7 @@ function App() {
                 <Route path="/student/dashboard/enrollment" element={<PrivateRoute><StudentEnrollment /></PrivateRoute>} />
                 <Route path="/student/dashboard/attendance" element={<PrivateRoute><AttendanceHistry /></PrivateRoute>} />
               </Route>
-               <Route path='/conversations' element={<MainConversation />}></Route>
+               <Route path='/conversations' element={<PrivateRoute><MainConversation /></PrivateRoute>}></Route>
             </Routes>
             <Footer></Footer>
           </BrowserRouter>

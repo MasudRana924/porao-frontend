@@ -26,7 +26,7 @@ const TutorLogin = () => {
     };
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/tutor/profile');
+            navigate('/tutor/dashboard');
         }
     }, [navigate, isAuthenticated]);
     return (

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { message, Alert } from 'antd';
-import { createTeacherRegister } from "../../../redux/reducers/auth/registerSlice";
+import { createTeacherRegister, registrationClean } from "../../../redux/reducers/auth/registerSlice";
 
 const TutorRegister = () => {
     const dispatch = useDispatch();
@@ -12,24 +12,22 @@ const TutorRegister = () => {
     const { success, errorMessage,isLoading } = useSelector(
         (state) => state.register
     );
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data={name,email,password };
-        console.log("data",data)
-        dispatch(createTeacherRegister({ data}));
+        dispatch(createTeacherRegister({email,password}));
     };
     useEffect(() => {
         if (success) {
             message.success("Registration successful");
             const timerId = setTimeout(() => {
                 navigate('/auth/tutor/verify/account');
+                dispatch(registrationClean())
             }, 1000);
             return () => clearTimeout(timerId);
         }
-    }, [success, navigate]);
+    }, [success, navigate,dispatch]);
     return (
         <main className=" flex flex-1 justify-center items-center mt-24">
             <div className="w-full max-w-md overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -38,18 +36,6 @@ const TutorRegister = () => {
                         Login or create account
                     </p>
                     <form onSubmit={handleSubmit}>
-                        <div className="flex justify-between gap-2">
-                            <div className="w-full mt-4">
-                                <input
-                                    className="font-mono block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-black dark:focus:border-black focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-black"
-                                    type="text"
-                                    placeholder="Full Name"
-                                    aria-label="Full Name"
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </div>
                         <div className="justify-between gap-2">
                             <div className="w-full mt-4">
                                 <input
