@@ -4,10 +4,11 @@ import { formatDate } from '../../../../redux/utilities/helper';
 import { fetchTutionPost } from '../../../../redux/reducers/tuionPost/tuitionPostSlice';
 import { createEnrollmentTeacher, enrollmentClean } from '../../../../redux/reducers/enrollment/teacherBookSlice';
 import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const Post = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(fetchTutionPost());
     }, [dispatch]);
@@ -21,7 +22,11 @@ const Post = () => {
             batchId,
             teacherId,
         };
-        dispatch(createEnrollmentTeacher({ token, data }));
+        if (token) {
+            dispatch(createEnrollmentTeacher({ token, data }));
+          } else {
+            navigate('/student/dashboard');
+          }
     };
 
     useEffect(() => {

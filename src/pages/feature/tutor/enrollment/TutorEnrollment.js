@@ -33,8 +33,8 @@ dispatch(updateEnrollmentStatus({token,status,enrollmentId}))
   }
 
   return (
-    <div className="w-full ">
-      <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">
+    <div className="w-full p-16">
+      <h2 className="text-start text-2xl font-semibold text-gray-700 capitalize dark:text-white">
         My Enrollment
       </h2>
       <section className="w-full  mx-auto ">

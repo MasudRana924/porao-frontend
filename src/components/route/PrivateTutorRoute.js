@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-export default function PrivateRoute({ children }) {
+export default function PrivateTutorRoute({ children }) {
     const { token, user } = useSelector(
         (state) => state.user
     );
-    return token ? children : <Navigate to="/auth/student/login" />
+    return token ? children : <Navigate to="/auth/tutor/login" />
 };
-

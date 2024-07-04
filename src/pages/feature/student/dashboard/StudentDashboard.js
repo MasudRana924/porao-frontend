@@ -1,6 +1,4 @@
 import React from "react";
-import LeftSidebar from "../../../../components/teacher/LeftSidebar";
-import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -9,9 +7,11 @@ import {
 } from "../../../../redux/reducers/enrollment/studentEnrollmentSlice";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { fetchStudentAttendance} from "../../../../redux/reducers/attendance/createAttendanceSlice";
-import AttendanceHistry from "../attendance/AttendanceHistry";
+import EnrollmentCrad from "../enrollment/EnrollmentCrad";
+import AttendanceCard from "../attendance/AttendanceCard";
+import { useState } from "react";
 const StudentDashboard = () => {
-  const { token } = useSelector((state) => state.user.user);
+  const { token,name } = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchStudentPendingEnrollment({ token }));
@@ -27,12 +27,34 @@ const StudentDashboard = () => {
   const { data } = useSelector((state) => state.attendance.studentAttendances);
   const presentStatus = data?.presentPercentage;
   const absentStatus = data?.absentPercentage;
+  const [greeting, setGreeting] = useState('');
 
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+    let greetingMessage = '';
+
+    if (currentHour >= 5 && currentHour < 12) {
+      greetingMessage = 'Good morning';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      greetingMessage = 'Good afternoon';
+    } else {
+      greetingMessage = 'Good evening';
+    }
+
+    setGreeting(greetingMessage);
+  }, []);
   return (
     <div className="w-full  border border-gray-100">
-      <p className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white p-16">
-        Dashboard
+      <p className="text-start text-3xl font-semibold text-gray-700 capitalize dark:text-white 
+      pl-16 pt-16">
+        Dashboard 
       </p>
+      <p className="text-start text-xs pl-16 mt-4">{greeting}, {name}</p>
+
+      <div className="p-16 flex gap-4">
+        <EnrollmentCrad></EnrollmentCrad>
+        <AttendanceCard/>
+      </div>
       <div className="mt-12 flex w-full">
         <div className="w-full ">
           <PieChart

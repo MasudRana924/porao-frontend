@@ -42,8 +42,8 @@ const TutorAttendance = () => {
     };
 
     return (
-        <div className="w-full">
-            <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">
+        <div className="w-full p-16">
+            <h2 className="text-start text-2xl font-semibold text-gray-700 capitalize dark:text-white">
                 Give Attendance
             </h2>
             <div className='w-2/4 justify-start flex mt-8'>

@@ -75,8 +75,8 @@ const Profile = () => {
         }
     }, [updatedTeacher, dispatch]);
     return (
-        <section className="w-full ">
-            <h2 className="text-start text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
+        <section className="w-3/4 p-16">
+            <h2 className="text-start text-2xl font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
 
             <form onSubmit={handleUpdateProfile}>
                 <div>
@@ -173,11 +173,11 @@ const Profile = () => {
 
                 <div className="flex justify-end mt-6">
                 {isLoading ? (
-                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black  ">
+                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500  ">
                         Loading
                     </button>
                 ) : (
-                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black ">
+                    <button className="font-mono mt-4 w-1/4 px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 ">
                         Update 
                     </button>
                 )}
