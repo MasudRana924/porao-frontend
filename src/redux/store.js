@@ -46,7 +46,7 @@ export const store = configureStore({
       immutableCheck: false,
       serializableCheck: false,
     }).concat(middlewares),
-  // devTools: true,
-  devTools: false,
+  devTools: true,
+  // devTools: false,
 });
 export const persistor = persistStore(store);
