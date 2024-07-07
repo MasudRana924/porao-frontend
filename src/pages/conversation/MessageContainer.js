@@ -6,11 +6,11 @@ const MessageContainer = () => {
     return (
         <div>
             {
-                selectedTeacher ? <div></div>:<div className=' w-3/4 mx-auto flex justify-center items-center'>
-                    <div>
+                selectedTeacher ? <div>
+
+                </div>:
+                <div className=' flex justify-center items-center h-full'>
                     <h2 className='text-xl mt-16 mb-8'>Please start a conversation</h2>
-                    <img  src={conversationImg} alt="" className=' w-3/4 mx-auto'/>
-                    </div>
                 </div>
             }
         </div>

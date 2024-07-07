@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate } from "react-router-dom";
-import { verifyOTP } from "../../../redux/reducers/auth/verifyOtpSlice";
+import { verifyOTP, verifyOTPClean } from "../../../redux/reducers/auth/verifyOtpSlice";
 import { message} from 'antd';
 const OtpVerify = () => {
     const dispatch = useDispatch();
@@ -64,10 +64,11 @@ const OtpVerify = () => {
         if (success) {
             message.success("Verification successful");
             navigate('/auth/tutor/login');
+            dispatch(verifyOTPClean())
         }if(errorMessage){
             message.error(errorMessage)
         }
-    }, [success, navigate,errorMessage]);
+    }, [success, navigate,errorMessage,dispatch]);
     return (
         // <div className=" mt-24 w-full md:w-2/4 lg:w-1/4 mx-auto flex justify-center items-center">
         <div className=" flex flex-1 justify-center items-center mt-24">

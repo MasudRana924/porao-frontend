@@ -24,6 +24,13 @@ export const verifyOTPSlice = createSlice({
     error: '',
     errorMessage:"",
   },
+  reducers: {
+    verifyOTPClean: (state) => {
+      state.error = false;
+      state.errorMessage = "";
+      state.success = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(verifyOTP.pending, (state) => {
       state.isLoading = true;
@@ -40,5 +47,5 @@ export const verifyOTPSlice = createSlice({
     });
   },
 });
-
+export const { verifyOTPClean } = verifyOTPSlice.actions;
 export default verifyOTPSlice.reducer;
