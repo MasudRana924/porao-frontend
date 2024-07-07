@@ -32,10 +32,14 @@ const Navbar = () => {
                         <div className="flex flex-col -mx-6 md:flex-row md:items-center md:mx-4 lg:mx-4 2xl:mx-8">
                             <Link to="#" className="mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Contact Us</Link>
                             <Link to="#" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">About Us</Link>
-                            <Link to="/components/teachersstore" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Find Tutor</Link>
+                           
                             {token && user?.role === "teacher" ?
                                 null :
                                 <Link to="/auth/tutor/register" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Become a Tutor</Link>
+                            }
+                             {token && user?.role === "teacher" ?
+                                null :
+                                <Link to="/home/tutor" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">Find Home Tutor</Link>
                             }
                         </div>
                         {token ? <Link to="/conversations" className="px-3 py-2 mx-3 mt-2 text-gray-900 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 dark:hover:bg-gray-700 font-mono">

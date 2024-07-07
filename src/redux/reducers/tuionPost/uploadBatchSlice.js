@@ -24,17 +24,6 @@ export const fetchTeacherBatch = createAsyncThunk(
     }
   }
 );
-// export const fetchEnrollmentByBatchId = createAsyncThunk(
-//   "teacher/fetchEnrollmentByBatchId",
-//   async ({ token, batchId }, { rejectWithValue }) => {
-//     try {
-//       const response = await privateGet(`/enrollment/${batchId}`, token);
-//       return response.data;
-//     } catch (err) {
-//       return rejectWithValue(err.response);
-//     }
-//   }
-// );
 export const uploadTuitionPostSlice = createSlice({
   name: "uploadBatch",
   initialState: {
