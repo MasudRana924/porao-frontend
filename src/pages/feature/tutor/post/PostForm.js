@@ -7,7 +7,7 @@ import { message } from 'antd';
 const PostForm = () => {
     const dispatch = useDispatch()
     const { token } = useSelector((state) => state.user.user);
-    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [subject, setSubject] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
@@ -22,7 +22,7 @@ const PostForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = {
-            name,
+            description,
             subject,
             startTime,
             endTime,
@@ -82,6 +82,11 @@ const PostForm = () => {
                         <br />
                         <input type="checkbox" value="Sunday" onChange={() => handleDayChange('Sunday')} /> Sunday
                     </div>
+                </div>
+                <div>
+                    <label className="text-start block mb-2 text-sm text-gray-600 dark:text-gray-200">Start Time</label>
+                    <textarea type="text" placeholder="Write a description" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                        onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 {isLoading ? (
                     <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500  ">

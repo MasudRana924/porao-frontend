@@ -96,6 +96,8 @@ const BatchForm = () => {
                         <input type="checkbox" value="Sunday" onChange={() => handleDayChange('Sunday')} /> Sunday
                     </div>
                 </div>
+
+                
                 {isLoading ? (
                     <button className="font-mono mt-4 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500  ">
                         Loading
