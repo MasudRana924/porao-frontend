@@ -58,7 +58,9 @@ const Post = () => {
                     <div key={post.batchId} className="border border-gray-900 bg-gray-900 rounded-lg p-4">
                         <div className='flex gap-4'>
                             <div className="w-1/4">
-                                {/* <img className="object-cover w-12 h-12 rounded-full" src={post?.teacherInfo?.image} alt=""></img> */}
+                                {
+                                    post.teacherInfo?.image? <img className="object-cover w-12 h-12 rounded-full" src={post?.teacherInfo?.image} alt=""></img>:<img className="object-cover w-12 h-12 rounded-full" src="" alt=""></img>
+                                }
                             </div>
                             <div className="w-full">
                                 <h1 className="text-white font-mono text-xl text-start">{post?.teacherInfo?.name}</h1>

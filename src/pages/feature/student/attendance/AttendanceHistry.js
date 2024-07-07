@@ -46,7 +46,7 @@ const AttendanceHistry = () => {
           className="h-10 w-full border border-gray-100 outline-none"
         >
           <option value="">Select a batch</option>
-          {enrollments.map((batch) => (
+          {enrollments?.map((batch) => (
             <option key={batch.id} value={batch.batchInfo.batchId}>
               {batch.batchInfo.name}
             </option>

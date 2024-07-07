@@ -30,6 +30,7 @@ import TutorAttendance from './pages/feature/tutor/attendance/TutorAttendance';
 import AttendanceHistry from './pages/feature/student/attendance/AttendanceHistry';
 import MainConversation from './pages/conversation/MainConversation';
 import PrivateTutorRoute from './components/route/PrivateTutorRoute';
+import PostForm from './pages/feature/tutor/post/PostForm';
 
 const socket = io('http://localhost:8088', {
   transports: ['websocket', 'polling']
@@ -94,6 +95,7 @@ function App() {
                 <Route index element={<PrivateTutorRoute><TutorDashboard /></PrivateTutorRoute>} />
                 <Route path="/tutor/dashboard/profile" element={<PrivateTutorRoute><Profile /></PrivateTutorRoute>} />
                 <Route path="/tutor/dashboard/upload/batch" element={<PrivateTutorRoute><BatchForm /></PrivateTutorRoute>} />
+                <Route path="/tutor/dashboard/upload/post" element={<PrivateTutorRoute><PostForm /></PrivateTutorRoute>} />
                 <Route path="/tutor/dashboard/enrollment" element={<PrivateTutorRoute><TutorEnrollment /></PrivateTutorRoute>} />
                 <Route path="/tutor/dashboard/batch" element={<PrivateTutorRoute><TutorBatchList /></PrivateTutorRoute>} />
                 <Route path="/tutor/dashboard/attendance" element={<PrivateTutorRoute><TutorAttendance /></PrivateTutorRoute>} />
