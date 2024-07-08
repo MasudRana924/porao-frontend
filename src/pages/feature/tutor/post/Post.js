@@ -91,13 +91,13 @@ const Post = () => {
                                     <span className='text-blue-500'>Hey Students</span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                 </h1>
                                 <h1 className="text-white text-xs text-start font-mono mt-2">{formatDate(post?.createdAt)}</h1>
-                                <button
+                                {/* <button
                                     onClick={() => handleClick(post.batchId, post?.teacherInfo?.teacherId)}
                                     className={`bg-white text-gray-900 mt-4 w-2/4 h-10 justify-start ${loadingButtons[post.batchId] ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     disabled={loadingButtons[post.batchId]}
                                 >
                                     {loadingButtons[post.batchId] ? 'Enrolling...' : 'Enroll'}
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     ))}
